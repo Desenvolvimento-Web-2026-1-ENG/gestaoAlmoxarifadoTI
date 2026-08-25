@@ -1,0 +1,27 @@
+{
+  "name": "gestaoalmoxarifadoti",
+  "version": "1.0.0",
+  "description": "Gerenciamento de itens de hardware (laptops, projetores, kits de Arduino) de um laboratório acadêmico.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Desenvolvimento-Web-2026-1-ENG/gestaoAlmoxarifadoTI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Desenvolvimento-Web-2026-1-ENG/gestaoAlmoxarifadoTI/issues"
+  },
+  "homepage": "https://github.com/Desenvolvimento-Web-2026-1-ENG/gestaoAlmoxarifadoTI#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
