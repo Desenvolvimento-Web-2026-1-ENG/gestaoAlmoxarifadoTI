@@ -22,7 +22,14 @@ const equipamentos = [
     }
 ];
 
-const alunos = [];
+const alunos = [
+    {
+    "id": 1,
+    "nome": "Lucas Severiano",
+    "matricula": "202311250075",
+    "curso": "Engenharia de Computação"
+    }
+];
 
 const emprestimos = [];
 
