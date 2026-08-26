@@ -4,6 +4,8 @@ const equipamentoRoutes = require("./scr/routes/equipamentoRoutes");
 
 const alunoRoutes = require("./scr/routes/alunoRoutes");
 
+const emprestimoRoutes = require("./scr/routes/emprestimoRoutes");
+
 const app = express();
 
 app.use(express.json());
@@ -11,6 +13,8 @@ app.use(express.json());
 app.use("/equipamentos", equipamentoRoutes);
 
 app.use("/alunos", alunoRoutes);
+
+app.use("/emprestimos", emprestimoRoutes);
 
 const PORT = 3000;
 
