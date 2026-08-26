@@ -63,6 +63,7 @@ function cadastrarEmprestimo(req, res) {
         dataDevolucaoPrevista
     } = req.body;
 
+    // Validação dos dados obrigatórios
     if (
         !alunoId ||
         !equipamentoIds ||
@@ -75,6 +76,7 @@ function cadastrarEmprestimo(req, res) {
         });
     }
 
+    // Verifica se o aluno existe
     const aluno = alunos.find(
         aluno => aluno.id === Number(alunoId)
     );
@@ -85,59 +87,147 @@ function cadastrarEmprestimo(req, res) {
         });
     }
 
+    // Procura os equipamentos solicitados
     const equipamentosSelecionados = equipamentoIds.map(
         id => equipamentos.find(
             equipamento => equipamento.id === Number(id)
         )
     );
 
-    const equipamentoInexistente = equipamentosSelecionados.some(
-        equipamento => !equipamento
-    );
+    // Verifica se algum equipamento não existe
+    const equipamentosInexistentes = equipamentosSelecionados
+        .filter(equipamento => !equipamento);
 
-    if (equipamentoInexistente) {
+    if (equipamentosInexistentes.length > 0) {
         return res.status(404).json({
             erro: "Um ou mais equipamentos não foram encontrados."
         });
     }
 
-    const equipamentoIndisponivel = equipamentosSelecionados.find(
-        equipamento =>
-            equipamento.status === "Em Manutenção" ||
-            equipamento.status === "Em Uso"
+    // Separa equipamentos disponíveis e indisponíveis
+    const equipamentosDisponiveis = equipamentosSelecionados.filter(
+        equipamento => equipamento.status === "Disponível"
     );
 
-    if (equipamentoIndisponivel) {
+    const equipamentosIndisponiveis = equipamentosSelecionados.filter(
+        equipamento =>
+            equipamento.status === "Em Uso" ||
+            equipamento.status === "Em Manutenção"
+    );
+
+    // Caso NENHUM equipamento esteja disponível
+    if (equipamentosDisponiveis.length === 0) {
+
+        const nomesIndisponiveis = equipamentosIndisponiveis.map(
+            equipamento =>
+                `${equipamento.nome} (${equipamento.status})`
+        );
+
         return res.status(400).json({
-            erro: `O equipamento ${equipamentoIndisponivel.id} não está disponível para empréstimo.`
+            erro: "Nenhum dos equipamentos solicitados está disponível.",
+            equipamentosIndisponiveis: nomesIndisponiveis
         });
     }
 
+    // Cria o empréstimo somente com os equipamentos disponíveis
     const novoEmprestimo = {
         id: emprestimos.length + 1,
         alunoId: Number(alunoId),
-        equipamentoIds: equipamentoIds.map(id => Number(id)),
+
+        equipamentoIds: equipamentosDisponiveis.map(
+            equipamento => equipamento.id
+        ),
+
         dataEmprestimo: formatarData(new Date()),
+
         dataDevolucaoPrevista,
+
         status: "Ativo"
     };
 
+    // Adiciona o empréstimo ao banco
     emprestimos.push(novoEmprestimo);
 
-    equipamentoIds.forEach(id => {
+    // Altera o status dos equipamentos emprestados
+    equipamentosDisponiveis.forEach(
+        equipamento => {
+            equipamento.status = "Em Uso";
+        }
+    );
+
+    // Monta a resposta
+    const resposta = {
+        mensagem: "Empréstimo realizado com sucesso.",
+
+        emprestimo: novoEmprestimo,
+
+        quantidadeSolicitada: equipamentoIds.length,
+
+        quantidadeEmprestada: equipamentosDisponiveis.length
+    };
+
+    // Caso existam equipamentos indisponíveis
+    if (equipamentosIndisponiveis.length > 0) {
+
+        resposta.aviso =
+            `Empréstimo realizado parcialmente: ${equipamentosDisponiveis.length} de ${equipamentoIds.length} equipamentos disponíveis.`;
+
+        resposta.equipamentosIndisponiveis =
+            equipamentosIndisponiveis.map(
+                equipamento => ({
+                    id: equipamento.id,
+                    nome: equipamento.nome,
+                    status: equipamento.status
+                })
+            );
+    }
+
+    res.status(201).json(resposta);
+}
+
+function devolverEmprestimo(req, res) {
+
+    const id = Number(req.params.id);
+
+    const emprestimo = emprestimos.find(
+        emprestimo => emprestimo.id === id
+    );
+
+    // Verifica se o empréstimo existe
+    if (!emprestimo) {
+        return res.status(404).json({
+            erro: "Empréstimo não encontrado."
+        });
+    }
+
+    // Verifica se o empréstimo já foi devolvido
+    if (emprestimo.status !== "Ativo") {
+        return res.status(400).json({
+            erro: "Este empréstimo já foi devolvido."
+        });
+    }
+
+    // Atualiza o status dos equipamentos
+    emprestimo.equipamentoIds.forEach(idEquipamento => {
 
         const equipamento = equipamentos.find(
-            equipamento => equipamento.id === Number(id)
+            equipamento => equipamento.id === idEquipamento
         );
 
-        equipamento.status = "Em Uso";
+        if (equipamento) {
+            equipamento.status = "Disponível";
+        }
     });
 
-    res.status(201).json(novoEmprestimo);
+    // Atualiza o empréstimo
+    emprestimo.status = "Devolvido";
+
+    res.status(200).json(emprestimo);
 }
 
 module.exports = {
     listarEmprestimos,
     buscarEmprestimoPorId,
-    cadastrarEmprestimo
+    cadastrarEmprestimo,
+    devolverEmprestimo
 };
