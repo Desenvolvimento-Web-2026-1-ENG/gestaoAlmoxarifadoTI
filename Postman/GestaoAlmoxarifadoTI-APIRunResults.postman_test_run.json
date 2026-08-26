@@ -1,0 +1,777 @@
+{
+	"id": "142cc0b3-4611-4dcc-9df6-e38ae890b2ca",
+	"name": "Gestao AlmoxarifadoTI - API",
+	"timestamp": "2026-08-26T14:28:58.010Z",
+	"collection_id": "57689454-208b498f-0f46-4ba4-bb41-4cf39284ac06",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 55,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-08-26T14:28:55.287Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "dbdcfbea-d779-414c-8e13-3809a46484f1",
+			"name": "GET - Listar equipamentos",
+			"url": "http://localhost:3000/equipamentos",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Resposta deve ser um array": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser um array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Resposta deve ser um array": true
+				}
+			]
+		},
+		{
+			"id": "5203108a-c7b8-45a2-b70c-e7f38ff63f57",
+			"name": "GET - Buscar equipamento por ID",
+			"url": "http://localhost:3000/equipamentos/1",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Equipamento deve possuir ID": true,
+				"Equipamento deve possuir patrimônio": true,
+				"Equipamento deve possuir nome": true,
+				"Equipamento deve possuir categoria": true,
+				"Equipamento deve possuir status": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento deve possuir patrimônio": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento deve possuir nome": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento deve possuir categoria": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento deve possuir status": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Equipamento deve possuir ID": true,
+					"Equipamento deve possuir patrimônio": true,
+					"Equipamento deve possuir nome": true,
+					"Equipamento deve possuir categoria": true,
+					"Equipamento deve possuir status": true
+				}
+			]
+		},
+		{
+			"id": "4a9391d4-6b53-45d3-b1d9-8d6046967028",
+			"name": "GET - Buscar Equipamento Inexistente",
+			"url": "http://localhost:3000/equipamentos/999",
+			"time": 3,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status deve ser 404": true,
+				"Resposta deve ser JSON": true,
+				"Resposta deve possuir mensagem de erro": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve possuir mensagem de erro": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 404": true,
+					"Resposta deve ser JSON": true,
+					"Resposta deve possuir mensagem de erro": true
+				}
+			]
+		},
+		{
+			"id": "26cb705b-4f18-496a-97e7-b64b8d3c007d",
+			"name": "GET - Filtrar equipamentos",
+			"url": "http://localhost:3000/equipamentos?status=disponivel",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Resposta deve ser um array": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser um array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Resposta deve ser um array": true
+				}
+			]
+		},
+		{
+			"id": "d334b45b-b681-445e-a06c-e5f26ea45851",
+			"name": "POST - Cadastrar equipamento",
+			"url": "http://localhost:3000/equipamentos",
+			"time": 31,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status deve ser 201": true,
+				"Resposta deve ser JSON": true,
+				"Equipamento criado deve possuir ID": true,
+				"Equipamento criado deve possuir patrimônio": true,
+				"Equipamento criado deve iniciar como Disponível": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento criado deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento criado deve possuir patrimônio": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento criado deve iniciar como Disponível": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status deve ser 201": true,
+					"Resposta deve ser JSON": true,
+					"Equipamento criado deve possuir ID": true,
+					"Equipamento criado deve possuir patrimônio": true,
+					"Equipamento criado deve iniciar como Disponível": true
+				}
+			]
+		},
+		{
+			"id": "988b309d-6de7-46ca-8fb0-5ac2efe5ddac",
+			"name": "POST - Cadastrar equipamento inválido",
+			"url": "http://localhost:3000/equipamentos",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status deve ser 400": true,
+				"Resposta deve ser JSON": true,
+				"Resposta deve possuir erro": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve possuir erro": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status deve ser 400": true,
+					"Resposta deve ser JSON": true,
+					"Resposta deve possuir erro": true
+				}
+			]
+		},
+		{
+			"id": "c94d387a-0efd-4bc1-8826-6bab9b0e1e13",
+			"name": "PUT - Atualizar equipamento",
+			"url": "http://localhost:3000/equipamentos/1",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Equipamento atualizado deve possuir ID": true,
+				"Nome deve estar atualizado": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Equipamento atualizado deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Nome deve estar atualizado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Equipamento atualizado deve possuir ID": true,
+					"Nome deve estar atualizado": true
+				}
+			]
+		},
+		{
+			"id": "9ef43c9e-cf02-48b3-b940-08c03bf60de2",
+			"name": "DELETE - Excluir equipamento",
+			"url": "http://localhost:3000/equipamentos/4",
+			"time": 3,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status deve ser 204": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 204": true
+				}
+			]
+		},
+		{
+			"id": "7de37411-35a3-4536-828d-908c3ba25146",
+			"name": "GET - Listar alunos",
+			"url": "http://localhost:3000/alunos",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Resposta deve ser um array": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser um array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Resposta deve ser um array": true
+				}
+			]
+		},
+		{
+			"id": "dbd01fad-404a-413e-9b96-64b8c43d2a8f",
+			"name": "GET - Buscar aluno por ID",
+			"url": "http://localhost:3000/alunos/1",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Aluno deve possuir ID": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aluno deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Aluno deve possuir ID": true
+				}
+			]
+		},
+		{
+			"id": "157783d3-5116-4026-a627-6257dce528ae",
+			"name": "POST - Cadastrar aluno",
+			"url": "http://localhost:3000/alunos",
+			"time": 3,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status deve ser 201": true,
+				"Resposta deve ser JSON": true,
+				"Aluno criado deve possuir ID": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aluno criado deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 201": true,
+					"Resposta deve ser JSON": true,
+					"Aluno criado deve possuir ID": true
+				}
+			]
+		},
+		{
+			"id": "c9262d9f-02d2-4b20-8556-13116e5c1824",
+			"name": "PUT - Atualizar aluno",
+			"url": "http://localhost:3000/alunos/2",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Aluno deve possuir ID": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Aluno deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Aluno deve possuir ID": true
+				}
+			]
+		},
+		{
+			"id": "f5fe7627-a94a-4286-9b1c-9c3cc0ef3545",
+			"name": "DELETE - Excluir aluno",
+			"url": "http://localhost:3000/alunos/2",
+			"time": 2,
+			"responseCode": {
+				"code": 204,
+				"name": "No Content"
+			},
+			"tests": {
+				"Status deve ser 204": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 204": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2
+			],
+			"allTests": [
+				{
+					"Status deve ser 204": true
+				}
+			]
+		},
+		{
+			"id": "55b4ab30-3ab3-4e09-b867-4abda02b7237",
+			"name": "GET - Listar empréstimos",
+			"url": "http://localhost:3000/emprestimos",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Resposta deve ser um array": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser um array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Resposta deve ser um array": true
+				}
+			]
+		},
+		{
+			"id": "e9959865-169a-4b8b-b5db-256374dc3340",
+			"name": "POST - Registrar empréstimo",
+			"url": "http://localhost:3000/emprestimos",
+			"time": 4,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Status deve ser 201": true,
+				"Resposta deve ser JSON": true,
+				"Empréstimo deve possuir ID": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Empréstimo deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Status deve ser 201": true,
+					"Resposta deve ser JSON": true,
+					"Empréstimo deve possuir ID": true
+				}
+			]
+		},
+		{
+			"id": "96b10d04-07a2-492c-b37e-3d4d84019142",
+			"name": "GET - Buscar empréstimo por ID",
+			"url": "http://localhost:3000/emprestimos/1",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Empréstimo deve possuir ID": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Empréstimo deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Empréstimo deve possuir ID": true
+				}
+			]
+		},
+		{
+			"id": "806025f6-c3a9-42d2-b0d2-093f85d5c9f7",
+			"name": "PUT - Registrar devolução",
+			"url": "http://localhost:3000/emprestimos/1",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status deve ser 200": true,
+				"Resposta deve ser JSON": true,
+				"Empréstimo deve possuir ID": true,
+				"Empréstimo deve estar como Devolvido": true
+			},
+			"testPassFailCounts": {
+				"Status deve ser 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Resposta deve ser JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Empréstimo deve possuir ID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Empréstimo deve estar como Devolvido": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Status deve ser 200": true,
+					"Resposta deve ser JSON": true,
+					"Empréstimo deve possuir ID": true,
+					"Empréstimo deve estar como Devolvido": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 100,
+	"collection": {
+		"requests": [
+			{
+				"id": "dbdcfbea-d779-414c-8e13-3809a46484f1",
+				"method": "GET"
+			},
+			{
+				"id": "5203108a-c7b8-45a2-b70c-e7f38ff63f57",
+				"method": "GET"
+			},
+			{
+				"id": "4a9391d4-6b53-45d3-b1d9-8d6046967028",
+				"method": "GET"
+			},
+			{
+				"id": "26cb705b-4f18-496a-97e7-b64b8d3c007d",
+				"method": "GET"
+			},
+			{
+				"id": "d334b45b-b681-445e-a06c-e5f26ea45851",
+				"method": "POST"
+			},
+			{
+				"id": "988b309d-6de7-46ca-8fb0-5ac2efe5ddac",
+				"method": "POST"
+			},
+			{
+				"id": "c94d387a-0efd-4bc1-8826-6bab9b0e1e13",
+				"method": "PUT"
+			},
+			{
+				"id": "9ef43c9e-cf02-48b3-b940-08c03bf60de2",
+				"method": "DELETE"
+			},
+			{
+				"id": "7de37411-35a3-4536-828d-908c3ba25146",
+				"method": "GET"
+			},
+			{
+				"id": "dbd01fad-404a-413e-9b96-64b8c43d2a8f",
+				"method": "GET"
+			},
+			{
+				"id": "157783d3-5116-4026-a627-6257dce528ae",
+				"method": "POST"
+			},
+			{
+				"id": "c9262d9f-02d2-4b20-8556-13116e5c1824",
+				"method": "PUT"
+			},
+			{
+				"id": "f5fe7627-a94a-4286-9b1c-9c3cc0ef3545",
+				"method": "DELETE"
+			},
+			{
+				"id": "55b4ab30-3ab3-4e09-b867-4abda02b7237",
+				"method": "GET"
+			},
+			{
+				"id": "e9959865-169a-4b8b-b5db-256374dc3340",
+				"method": "POST"
+			},
+			{
+				"id": "96b10d04-07a2-492c-b37e-3d4d84019142",
+				"method": "GET"
+			},
+			{
+				"id": "806025f6-c3a9-42d2-b0d2-093f85d5c9f7",
+				"method": "PUT"
+			}
+		]
+	}
+}

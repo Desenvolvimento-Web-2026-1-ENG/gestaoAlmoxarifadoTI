@@ -67,7 +67,7 @@ gestaoAlmoxarifadoTI/
 │   ├── diagrama_de_classes/
 │   └── assets/                       # imagens dos wireframes
 └── Postman/
-    ├── GestaoAlmoxarifadoTI-API.postman_collectionAtualizado.json
+    ├── GestaoAlmoxarifadoTI-API.postman_collection.json
     └──GestaoAlmoxarifadoTI-APIRunResults.postman_test_run.json
 ```
 
