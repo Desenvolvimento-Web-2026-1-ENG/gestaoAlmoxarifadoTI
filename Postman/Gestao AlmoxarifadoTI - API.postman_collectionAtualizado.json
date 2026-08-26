@@ -20,7 +20,15 @@
           "response": []
         },
         {
-          "name": "GET -Buscar equipamento por ID",
+          "name": "GET - Buscar equipamento por ID",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "GET - Buscar Equipamento Inexistente",
           "request": {
             "method": "GET",
             "header": []
@@ -37,6 +45,14 @@
         },
         {
           "name": "POST - Cadastrar equipamento",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        },
+        {
+          "name": "POST - Cadastrar equipamento inválido",
           "request": {
             "method": "GET",
             "header": []
