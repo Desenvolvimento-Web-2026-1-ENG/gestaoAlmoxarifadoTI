@@ -24,6 +24,14 @@ app.get("/", (req, res) => {
     });
 });
 
+app.use((req, res) => {
+    res.status(404).json({
+        erro: "Rota não encontrada."
+    });
+});
+
+app.use(errorHandler);
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
