@@ -1,7 +1,38 @@
 const { equipamentos } = require("../data/database");
 
+// Função para normalizar textos
+function normalizarTexto(texto) {
+    return texto
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+}
+
 function listarEquipamentos(req, res) {
-    res.status(200).json(equipamentos);
+
+    const { status, categoria } = req.query;
+
+    let resultado = equipamentos;
+
+    // Filtro por status
+    if (status) {
+        resultado = resultado.filter(
+            equipamento =>
+                normalizarTexto(equipamento.status) ===
+                normalizarTexto(status)
+        );
+    }
+
+    // Filtro por categoria
+    if (categoria) {
+        resultado = resultado.filter(
+            equipamento =>
+                normalizarTexto(equipamento.categoria) ===
+                normalizarTexto(categoria)
+        );
+    }
+
+    res.status(200).json(resultado);
 }
 
 function buscarEquipamentoPorId(req, res) {

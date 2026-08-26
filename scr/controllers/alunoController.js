@@ -1,7 +1,26 @@
 const { alunos } = require("../data/database");
 
 function listarAlunos(req, res) {
-    res.status(200).json(alunos);
+
+    const { nome, curso } = req.query;
+
+    let resultado = alunos;
+
+    if (nome) {
+        resultado = resultado.filter(
+            aluno =>
+                aluno.nome.toLowerCase().includes(nome.toLowerCase())
+        );
+    }
+
+    if (curso) {
+        resultado = resultado.filter(
+            aluno =>
+                aluno.curso.toLowerCase() === curso.toLowerCase()
+        );
+    }
+
+    res.status(200).json(resultado);
 }
 
 function buscarAlunoPorId(req, res) {

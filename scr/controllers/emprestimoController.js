@@ -14,7 +14,25 @@ function formatarData(data) {
 
 function listarEmprestimos(req, res) {
 
-    const emprestimosComAluno = emprestimos.map(emprestimo => {
+    const { status, alunoId } = req.query;
+
+    let resultado = emprestimos;
+
+    if (status) {
+        resultado = resultado.filter(
+            emprestimo =>
+                emprestimo.status.toLowerCase() === status.toLowerCase()
+        );
+    }
+
+    if (alunoId) {
+        resultado = resultado.filter(
+            emprestimo =>
+                emprestimo.alunoId === Number(alunoId)
+        );
+    }
+
+    const emprestimosComAluno = resultado.map(emprestimo => {
 
         const aluno = alunos.find(
             aluno => aluno.id === emprestimo.alunoId
