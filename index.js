@@ -6,6 +6,8 @@ const alunoRoutes = require("./scr/routes/alunoRoutes");
 
 const emprestimoRoutes = require("./scr/routes/emprestimoRoutes");
 
+const errorHandler = require("./scr/middlewares/errorHandler");
+
 const app = express();
 
 app.use(express.json());
