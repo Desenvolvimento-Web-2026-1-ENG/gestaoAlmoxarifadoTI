@@ -193,12 +193,9 @@ Protótipos de baixa/média fidelidade das telas principais (Dashboard, Inventá
 
 ---
 
-## Melhorias Futuras (fora do escopo da P1)
+## Front-end React
 
-- Persistência em banco de dados (MySQL/PostgreSQL)
-- Autenticação e autorização por perfil (Técnico x Aluno)
-- Front-end consumindo a API (HTML/CSS/JS)
-- Histórico completo de movimentações e notificações de atraso
+> A documentação completa do front-end está disponível no [`README.md`](client/README.md).
 
 ---
 
