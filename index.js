@@ -1,5 +1,7 @@
 const express = require("express");
 
+const cors = require("cors");
+
 const equipamentoRoutes = require("./scr/routes/equipamentoRoutes");
 
 const alunoRoutes = require("./scr/routes/alunoRoutes");
@@ -9,6 +11,8 @@ const emprestimoRoutes = require("./scr/routes/emprestimoRoutes");
 const errorHandler = require("./scr/middlewares/errorHandler");
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
