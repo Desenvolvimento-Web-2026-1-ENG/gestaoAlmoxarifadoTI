@@ -52,11 +52,11 @@ function EmprestimoForm() {
 
   return (
     <div className="container">
-      <h2>Novo Empréstimo</h2>
-      {erro && <div className="alert alert-danger">{erro}</div>}
-      {aviso && <div className="alert alert-warning">{aviso}</div>}
+      <h2 className="text-center">Novo Empréstimo</h2>
+      {erro && <div className="alert alert-danger mx-auto" style={{ maxWidth: 480 }}>{erro}</div>}
+      {aviso && <div className="alert alert-warning mx-auto" style={{ maxWidth: 480 }}>{aviso}</div>}
 
-      <form onSubmit={handleSubmit} className="mt-3" style={{ maxWidth: 480 }}>
+      <form onSubmit={handleSubmit} className="mt-3 mx-auto" style={{ maxWidth: 480 }}>
         <div className="mb-3">
           <label className="form-label">Aluno</label>
           <select
