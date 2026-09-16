@@ -524,7 +524,7 @@ Título:
 
 **Entrega P2 - Interface React**
 
-[Consultar Release no GitHub](https://github.com/Desenvolvimento-Web-2026-1-ENG/gestaoAlmoxarifadoTI/releases)
+[Release no GitHub](https://github.com/Desenvolvimento-Web-2026-1-ENG/gestaoAlmoxarifadoTI/releases/tag/v2.0.0-p2)
 
 ---
 
