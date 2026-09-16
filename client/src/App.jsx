@@ -12,20 +12,22 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
+      <main className="page-wrapper">
+        <Routes>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/equipamentos" element={<EquipamentosList />} />
-        <Route path="/equipamentos/novo" element={<EquipamentoForm />} />
-        <Route path="/equipamentos/:id/editar" element={<EquipamentoForm />} />
+          <Route path="/equipamentos" element={<EquipamentosList />} />
+          <Route path="/equipamentos/novo" element={<EquipamentoForm />} />
+          <Route path="/equipamentos/:id/editar" element={<EquipamentoForm />} />
 
-        <Route path="/alunos" element={<AlunosList />} />
-        <Route path="/alunos/novo" element={<AlunoForm />} />
-        <Route path="/alunos/:id/editar" element={<AlunoForm />} />
+          <Route path="/alunos" element={<AlunosList />} />
+          <Route path="/alunos/novo" element={<AlunoForm />} />
+          <Route path="/alunos/:id/editar" element={<AlunoForm />} />
 
-        <Route path="/emprestimos" element={<EmprestimosList />} />
-        <Route path="/emprestimos/novo" element={<EmprestimoForm />} />
-      </Routes>
+          <Route path="/emprestimos" element={<EmprestimosList />} />
+          <Route path="/emprestimos/novo" element={<EmprestimoForm />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }

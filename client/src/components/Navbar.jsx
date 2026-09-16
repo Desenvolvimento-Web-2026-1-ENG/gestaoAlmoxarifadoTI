@@ -2,12 +2,12 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const linkClass = ({ isActive }) =>
-    "nav-link" + (isActive ? " active fw-bold text-white" : " text-white-50");
+    "nav-link" + (isActive ? " active " : "");
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
       <div className="container">
-        <NavLink className="navbar-brand text-white" to="/">
+        <NavLink className="navbar-brand" to="/">
           Almoxarifado de TI
         </NavLink>
         <div className="navbar-nav">
