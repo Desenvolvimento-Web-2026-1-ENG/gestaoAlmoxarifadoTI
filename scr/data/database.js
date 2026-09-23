@@ -4,6 +4,7 @@ const equipamentos = [
         patrimonio: "PAT-001",
         nome: "Notebook Dell",
         categoria: "Laptop",
+        imagem: "",
         status: "Disponível"
     },
     {
@@ -11,6 +12,7 @@ const equipamentos = [
         patrimonio: "PAT-002",
         nome: "Projetor Epson",
         categoria: "Projetor",
+        imagem: "",
         status: "Disponível"
     },
     {
@@ -18,6 +20,7 @@ const equipamentos = [
         patrimonio: "PAT-003",
         nome: "Kit Arduino",
         categoria: "Arduino",
+        imagem: "",
         status: "Em Manutenção"
     }
 ];

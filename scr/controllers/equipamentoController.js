@@ -57,7 +57,8 @@ function cadastrarEquipamento(req, res) {
     const {
         patrimonio,
         nome,
-        categoria
+        categoria,
+        imagem
     } = req.body;
 
     if (!patrimonio || !nome || !categoria) {
@@ -81,6 +82,7 @@ function cadastrarEquipamento(req, res) {
         patrimonio,
         nome,
         categoria,
+        imagem: imagem || "",
         status: "Disponível"
     };
 
@@ -107,6 +109,7 @@ function atualizarEquipamento(req, res) {
         patrimonio,
         nome,
         categoria,
+        imagem,
         status
     } = req.body;
 
@@ -131,6 +134,7 @@ function atualizarEquipamento(req, res) {
     equipamento.patrimonio = patrimonio;
     equipamento.nome = nome;
     equipamento.categoria = categoria;
+    equipamento.imagem = imagem || equipamento.imagem || "";
     equipamento.status = status;
 
     res.status(200).json(equipamento);

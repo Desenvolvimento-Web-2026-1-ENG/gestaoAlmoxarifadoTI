@@ -11,21 +11,58 @@ function EquipamentoForm() {
     patrimonio: "",
     nome: "",
     categoria: "",
+    imagem: "",
     status: "Disponível"
   });
+  const [imagemPreview, setImagemPreview] = useState("");
   const [erro, setErro] = useState("");
 
   useEffect(() => {
     if (editando) {
       api
         .get(`/equipamentos/${id}`)
-        .then(res => setForm(res.data))
+        .then(res => {
+          const dados = res.data || {};
+          setForm({
+            patrimonio: dados.patrimonio || "",
+            nome: dados.nome || "",
+            categoria: dados.categoria || "",
+            imagem: dados.imagem || "",
+            status: dados.status || "Disponível"
+          });
+          setImagemPreview(dados.imagem || "");
+        })
         .catch(() => setErro("Equipamento não encontrado."));
     }
   }, [id]);
 
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+
+    if (name === "imagem") {
+      setImagemPreview(value);
+    }
+  }
+
+  function handleFileChange(e) {
+    const arquivo = e.target.files?.[0];
+
+    if (!arquivo) return;
+
+    if (!arquivo.type.startsWith("image/")) {
+      setErro("Selecione um arquivo de imagem válido.");
+      return;
+    }
+
+    const leitor = new FileReader();
+    leitor.onload = () => {
+      const imagemDataUrl = leitor.result;
+      setForm(prev => ({ ...prev, imagem: imagemDataUrl }));
+      setImagemPreview(imagemDataUrl);
+      setErro("");
+    };
+    leitor.readAsDataURL(arquivo);
   }
 
   function handleSubmit(e) {
@@ -46,7 +83,7 @@ function EquipamentoForm() {
   return (
     <div className="container">
       <h2 className="text-center">{editando ? "Editar" : "Novo"} Equipamento</h2>
-       {erro && <div className="alert alert-danger mx-auto" style={{ maxWidth: 480 }}>{erro}</div>}
+      {erro && <div className="alert alert-danger mx-auto" style={{ maxWidth: 480 }}>{erro}</div>}
 
       <form onSubmit={handleSubmit} className="mt-3 mx-auto" style={{ maxWidth: 480 }}>
         <div className="mb-3">
@@ -80,6 +117,41 @@ function EquipamentoForm() {
             onChange={handleChange}
             required
           />
+        </div>
+
+        <div className="mb-3">
+          <label className="form-label">Imagem do Equipamento</label>
+          <input
+            className="form-control mb-2"
+            type="url"
+            name="imagem"
+            value={form.imagem}
+            onChange={handleChange}
+            placeholder="Insira o link da imagem aqui ou selecione um arquivo abaixo"
+          />
+          <input
+            type="file"
+            accept="image/*"
+            className="form-control"
+            onChange={handleFileChange}
+          />
+
+          {imagemPreview && (
+            <div className="mt-3 text-center">
+              <img
+                src={imagemPreview}
+                alt="Pré-visualização do equipamento"
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: 240,
+                  objectFit: "cover",
+                  borderRadius: 12,
+                  border: "1px solid #dfe3e8",
+                  background: "#f8f9fa"
+                }}
+              />
+            </div>
+          )}
         </div>
 
         {editando && (
